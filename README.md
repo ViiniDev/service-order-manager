@@ -1,5 +1,7 @@
 # Service Order Manager
 
+[![CI](https://github.com/ViiniDev/service-order-manager/actions/workflows/ci.yml/badge.svg)](https://github.com/ViiniDev/service-order-manager/actions/workflows/ci.yml)
+
 Sistema fullstack para gestao de ordens de servico, criado para demonstrar uma aplicacao Java backend com frontend consumindo API real.
 
 ## Visao Geral
@@ -21,6 +23,7 @@ O projeto simula um fluxo de suporte tecnico:
 - JWT
 - Spring Data JPA
 - Bean Validation
+- Swagger/OpenAPI
 - H2 para desenvolvimento local
 - PostgreSQL no Docker
 - Maven
@@ -37,6 +40,7 @@ O projeto simula um fluxo de suporte tecnico:
 - Docker
 - Docker Compose
 - Nginx para servir o frontend em container
+- GitHub Actions para CI
 
 ## Funcionalidades
 
@@ -50,6 +54,14 @@ O projeto simula um fluxo de suporte tecnico:
 - Comentarios e historico da ordem
 - Dashboard com contadores por status
 - Dados iniciais para demonstracao
+
+## Diferenciais Tecnicos
+
+- Autenticacao stateless com JWT.
+- Autorizacao por perfil de usuario.
+- Testes de integracao com MockMvc cobrindo login, protecao de endpoints e ciclo de vida da ordem.
+- Pipeline de CI com testes do backend, build do frontend e build dos containers.
+- Documentacao interativa da API com Swagger/OpenAPI.
 
 ## Usuarios De Demonstracao
 
@@ -85,6 +97,12 @@ API:
 http://localhost:8080
 ```
 
+Swagger:
+
+```text
+http://localhost:8080/docs
+```
+
 Para parar:
 
 ```bash
@@ -111,6 +129,12 @@ API local:
 
 ```text
 http://localhost:8080
+```
+
+Swagger local:
+
+```text
+http://localhost:8080/docs
 ```
 
 ### Frontend
@@ -205,12 +229,33 @@ cd backend
 mvn test
 ```
 
+Os testes atuais validam:
+
+- login com usuario inicial;
+- bloqueio de endpoint protegido sem token;
+- criacao de ordem por cliente;
+- atribuicao de tecnico por administrador;
+- alteracao de status por tecnico;
+- comentario em ordem de servico;
+- bloqueio de alteracao de status por cliente;
+- dashboard com dados consolidados.
+
 Frontend:
 
 ```bash
 cd frontend
 npm run build
 ```
+
+## CI/CD
+
+O projeto possui workflow no GitHub Actions em `.github/workflows/ci.yml`.
+
+O pipeline executa:
+
+- testes automatizados do backend com Maven;
+- build do frontend com npm;
+- build das imagens Docker via Docker Compose.
 
 ## Objetivo Do Projeto
 
