@@ -2,16 +2,16 @@
 
 [![CI](https://github.com/ViiniDev/service-order-manager/actions/workflows/ci.yml/badge.svg)](https://github.com/ViiniDev/service-order-manager/actions/workflows/ci.yml)
 
-Sistema fullstack para gestao de ordens de servico, criado para demonstrar uma aplicacao Java backend com frontend consumindo API real.
+Sistema fullstack para gestão de ordens de serviço, criado para demonstrar uma aplicação Java backend com frontend consumindo API real.
 
-## Visao Geral
+## Visão Geral
 
-O projeto simula um fluxo de suporte tecnico:
+O projeto simula um fluxo de suporte técnico:
 
-- cliente abre uma ordem de servico;
-- administrador acompanha indicadores e atribui um tecnico;
-- tecnico atualiza status e registra comentarios;
-- todos os perfis visualizam apenas os dados permitidos para sua funcao.
+- cliente abre uma ordem de serviço;
+- administrador acompanha indicadores e atribui um técnico;
+- técnico atualiza status e registra comentários;
+- todos os perfis visualizam apenas os dados permitidos para sua função.
 
 ## Tecnologias
 
@@ -46,24 +46,24 @@ O projeto simula um fluxo de suporte tecnico:
 
 - Login com JWT
 - Perfis `ADMIN`, `TECHNICIAN` e `CLIENT`
-- Cadastro de usuario pela API
-- Criacao de ordens de servico
-- Listagem por permissao de usuario
-- Atribuicao de tecnico por administrador
-- Atualizacao de status por administrador ou tecnico
-- Comentarios e historico da ordem
+- Cadastro de usuário pela API
+- Criação de ordens de serviço
+- Listagem por permissão de usuário
+- Atribuição de técnico por administrador
+- Atualização de status por administrador ou técnico
+- Comentários e histórico da ordem
 - Dashboard com contadores por status
-- Dados iniciais para demonstracao
+- Dados iniciais para demonstração
 
-## Diferenciais Tecnicos
+## Diferenciais Técnicos
 
-- Autenticacao stateless com JWT.
-- Autorizacao por perfil de usuario.
-- Testes de integracao com MockMvc cobrindo login, protecao de endpoints e ciclo de vida da ordem.
+- Autenticação stateless com JWT.
+- Autorização por perfil de usuário.
+- Testes de integração com MockMvc cobrindo login, proteção de endpoints e ciclo de vida da ordem.
 - Pipeline de CI com testes do backend, build do frontend e build dos containers.
-- Documentacao interativa da API com Swagger/OpenAPI.
+- Documentação interativa da API com Swagger/OpenAPI.
 
-## Usuarios De Demonstracao
+## Usuários de Demonstração
 
 Todos usam a senha:
 
@@ -74,10 +74,10 @@ Todos usam a senha:
 | Perfil | Email |
 | --- | --- |
 | Admin | `admin@demo.com` |
-| Tecnico | `tecnico@demo.com` |
+| Técnico | `tecnico@demo.com` |
 | Cliente | `cliente@demo.com` |
 
-## Como Rodar Com Docker
+## Como Rodar com Docker
 
 Na raiz do projeto:
 
@@ -85,7 +85,7 @@ Na raiz do projeto:
 docker-compose up --build
 ```
 
-Aplicacao web:
+Aplicação web:
 
 ```text
 http://localhost:3000
@@ -109,7 +109,7 @@ Para parar:
 docker-compose down
 ```
 
-Para remover tambem os dados do banco:
+Para remover também os dados do banco:
 
 ```bash
 docker-compose down -v
@@ -181,7 +181,7 @@ Authorization: Bearer TOKEN
 }
 ```
 
-### Atribuir Tecnico
+### Atribuir Técnico
 
 ```http
 PATCH /api/orders/1/assign
@@ -207,7 +207,7 @@ Authorization: Bearer TOKEN
 }
 ```
 
-### Adicionar Comentario
+### Adicionar Comentário
 
 ```http
 POST /api/orders/1/comments
@@ -220,7 +220,7 @@ Authorization: Bearer TOKEN
 }
 ```
 
-## Testes E Builds
+## Testes e Builds
 
 Backend:
 
@@ -231,13 +231,13 @@ mvn test
 
 Os testes atuais validam:
 
-- login com usuario inicial;
+- login com usuário inicial;
 - bloqueio de endpoint protegido sem token;
-- criacao de ordem por cliente;
-- atribuicao de tecnico por administrador;
-- alteracao de status por tecnico;
-- comentario em ordem de servico;
-- bloqueio de alteracao de status por cliente;
+- criação de ordem por cliente;
+- atribuição de técnico por administrador;
+- alteração de status por técnico;
+- comentário em ordem de serviço;
+- bloqueio de alteração de status por cliente;
 - dashboard com dados consolidados.
 
 Frontend:
@@ -257,6 +257,6 @@ O pipeline executa:
 - build do frontend com npm;
 - build das imagens Docker via Docker Compose.
 
-## Objetivo Do Projeto
+## Objetivo do Projeto
 
-Este projeto foi criado para portifolio backend Java, demonstrando autenticacao, autorizacao por perfil, regras de negocio, persistencia, frontend integrado, Docker e documentacao de execucao.
+Este projeto foi criado para portifolio backend Java, demonstrando autenticação, autorização por perfil, regras de negócio, persistência, frontend integrado, Docker e documentação de execução.
